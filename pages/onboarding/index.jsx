@@ -2,11 +2,12 @@ import Layout from "../../components/Layout";
 import ProgressBar from "../../components/ProgressBar"
 import ReactPlayer from 'react-player'
 import { useState } from "react";
+import Head from "next/head";
 
 const dummyUrls = [
-    "https://www.youtube.com/watch?v=LOS5WB75gkY&ab_channel=CarlKwan?start=0&end=20",
-    "https://www.youtube.com/watch?v=UhV6daog0L0&ab_channel=thiskath?start=0&end=20",
-    "https://www.youtube.com/watch?v=_ct3ccrU4AI&ab_channel=NeerusSaiyan?start=0&end=20"
+    "https://www.youtube.com/watch?v=LOS5WB75gkY&ab_channel=CarlKwan?start=0&end=30",
+    "https://www.youtube.com/watch?v=UhV6daog0L0&ab_channel=thiskath?start=0&end=30",
+    "https://www.youtube.com/watch?v=_ct3ccrU4AI&ab_channel=NeerusSaiyan?start=0&end=30"
 ]
 
 const OnboardingPage = () => {
@@ -41,15 +42,20 @@ const OnboardingPage = () => {
 
     return (
         <Layout>
+            <Head>
+                <title>
+                    PropReturns - Onboarding
+                </title>
+            </Head>
             <div className="flex justify-center pt-4 mx-3 max-w-sm gap-3">
                 {/* Progress Bar */}
                 {
                     dummyUrls.map((story, idx) => (
-                        <ProgressBar key={idx} bgcolor={"#6A5ACD"} progress={idx === currentStory ? ((currentProgress / 20) * 100) : null} /> //Divided by 20 since each video is 20 seconds long by default
+                        <ProgressBar key={idx} bgcolor={"#6A5ACD"} progress={idx === currentStory ? ((currentProgress / 30) * 100) : null} /> //Divided by 20 since each video is 20 seconds long by default
                     ))
                 }
             </div>
-            <div className="overflow-hidden mt-5">
+            <div className={`overflow-hidden mt-5 ${!currentProgress ? "animate-fade-in-down" : ""}`}>
 
                 {/* Video Player */}
                 <ReactPlayer
