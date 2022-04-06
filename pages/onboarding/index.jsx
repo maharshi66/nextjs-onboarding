@@ -10,8 +10,6 @@ const dummyUrls = [
 ]
 
 const OnboardingPage = () => {
-
-    const [mediaDuration, setMediaDuration] = useState(null);
     const [currentStory, setCurrentStory] = useState(0);
     const [currentProgress, setCurrentProgress] = useState(null);
 
@@ -19,17 +17,15 @@ const OnboardingPage = () => {
         setCurrentProgress(e.playedSeconds);
     }
 
-    const handleDuration = (e) => {
-        setMediaDuration(e);
-    }
-
     const handleOnEnded = (e) => {
         if (currentStory + 1 < dummyUrls.length) {
-            setCurrentStory(currentStory + 1)
+            setCurrentStory(currentStory + 1);
         }
         else {
             setCurrentStory(0);
         }
+
+        setCurrentProgress(0);
     }
 
     const handlePrevious = (e) => {
@@ -39,25 +35,29 @@ const OnboardingPage = () => {
         else {
             setCurrentStory(0);
         }
+
+        setCurrentProgress(0);
     }
 
     return (
         <Layout>
-            <div className="flex justify-center pt-4 mx-1 max-w-sm gap-5">
+            <div className="flex justify-center pt-4 mx-3 max-w-sm gap-3">
+                {/* Progress Bar */}
                 {
                     dummyUrls.map((story, idx) => (
-                        <ProgressBar key={idx} progress={idx === currentStory ? currentProgress : null} />
+                        <ProgressBar key={idx} bgcolor={"#6A5ACD"} progress={idx === currentStory ? ((currentProgress / 20) * 100) : null} /> //Divided by 20 since each video is 20 seconds long by default
                     ))
                 }
             </div>
-            <div className="overflow-hidden mt-5 animate-bounce-short">
+            <div className="overflow-hidden mt-5">
+
+                {/* Video Player */}
                 <ReactPlayer
                     url={dummyUrls[currentStory]}
-                    height={"65vh"}
+                    height={"68vh"}
                     width={"100vw"}
                     playing={true}
                     onProgress={handleProgress}
-                    onDuration={handleDuration}
                     onEnded={handleOnEnded}
                     config={{
                         youtube: {
@@ -66,12 +66,15 @@ const OnboardingPage = () => {
                     }}
                 />
             </div>
+
+            {/*Bottom Touch Controls */}
             <div className="h-full grid grid-cols-2">
+
                 {/* Previous Click */}
                 <div onClick={handlePrevious} className="h-full"></div>
 
                 {/* Next Click */}
-                <div onClick={handleOnEnded} className="h-full "></div>
+                <div onClick={handleOnEnded} className="h-full"></div>
             </div>
         </Layout>
     );
