@@ -6,13 +6,14 @@ import Head from "next/head";
 
 const dummyUrls = [
     "https://www.youtube.com/watch?v=LOS5WB75gkY&ab_channel=CarlKwan?start=0&end=30",
-    "https://www.youtube.com/watch?v=UhV6daog0L0&ab_channel=thiskath?start=0&end=30",
+    "https://www.youtube.com/watch?v=CoOdPZ-OdBs&ab_channel=PicturePulse?start=0&end=30",
     "https://www.youtube.com/watch?v=_ct3ccrU4AI&ab_channel=NeerusSaiyan?start=0&end=30"
 ]
 
 const OnboardingPage = () => {
     const [currentStory, setCurrentStory] = useState(0);
     const [currentProgress, setCurrentProgress] = useState(null);
+    const [animate, setAnimate] = useState("right");
 
     const handleProgress = (e) => {
         setCurrentProgress(e.playedSeconds);
@@ -26,7 +27,8 @@ const OnboardingPage = () => {
             setCurrentStory(0);
         }
 
-        setCurrentProgress(0);
+        setCurrentProgress(null);
+        setAnimate("right");
     }
 
     const handlePrevious = (e) => {
@@ -37,7 +39,8 @@ const OnboardingPage = () => {
             setCurrentStory(0);
         }
 
-        setCurrentProgress(0);
+        setCurrentProgress(null);
+        setAnimate("left");
     }
 
     return (
@@ -55,7 +58,13 @@ const OnboardingPage = () => {
                     ))
                 }
             </div>
-            <div className={`overflow-hidden mt-5 ${!currentProgress ? "animate-fade-in-down" : ""}`}>
+            <div className={`overflow-hidden mt-5 
+            ${!currentProgress ?
+                    animate === "right" ?
+                        "animate-fade-in-right"
+                        : "animate-fade-in-left"
+                    : ""}`
+            }>
 
                 {/* Video Player */}
                 <ReactPlayer
