@@ -24,7 +24,7 @@ export default function Home() {
           </Link>
 
           <a
-            href="https://github.com/vercel/next.js/tree/canary/examples"
+            href="https://github.com/maharshi66/nextjs-onboarding"
             className={styles.card}
           >
             <h2>Go To GitHub Repo &rarr;</h2>
