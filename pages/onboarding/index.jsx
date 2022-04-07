@@ -76,7 +76,7 @@ const OnboardingPage = () => {
                     onEnded={handleOnEnded}
                     config={{
                         youtube: {
-                            playerVars: { showinfo: 0, modestBranding: 1 }
+                            playerVars: { showinfo: 0, modestbranding: 1, rel: 0 }
                         },
                     }}
                 />

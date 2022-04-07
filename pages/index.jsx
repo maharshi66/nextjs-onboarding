@@ -11,16 +11,15 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main className={styles.main}>
+      <main className={`${styles.main} animate-fade-in-down`}>
         <h1 className={styles.title}>
-          Exercise with <a href="https://nextjs.org">Next.js!</a>
+          Onboarding with <a href="https://nextjs.org">Next.js!</a>
         </h1>
 
         <div className={styles.grid}>
           <Link href="/onboarding">
             <a className={styles.card}>
-              <h2>Onboarding &rarr;</h2>
-              <p className='text-slate-400'>Click to view</p>
+              <h2>Go To Onboarding &rarr;</h2>
             </a>
           </Link>
 
@@ -28,7 +27,7 @@ export default function Home() {
             href="https://github.com/vercel/next.js/tree/canary/examples"
             className={styles.card}
           >
-            <h2>GitHub Repo &rarr;</h2>
+            <h2>Go To GitHub Repo &rarr;</h2>
           </a>
         </div>
       </main>
@@ -37,6 +36,7 @@ export default function Home() {
         <p className='font-bold'>
           Created By Maharshi Shah
         </p>
+        <p className='text-sm'>maharshishah06@gmail.com</p>
       </footer>
     </div>
   )

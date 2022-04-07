@@ -40,9 +40,9 @@ module.exports = {
         'ping-short': 'ping 1s ease-in-out 5',
         'bounce-short': 'bounce 1s ease-in-out 5',
         'pulse-short': 'pulse 1s ease-in-out 1',
-        'fade-in-down': 'fade-in-down 0.8s ease-out',
-        'fade-in-left': 'fade-in-left 0.8s ease-out',
-        'fade-in-right': 'fade-in-right 0.8s ease-out',
+        'fade-in-down': 'fade-in-down 0.5s ease-out',
+        'fade-in-left': 'fade-in-left 0.5s ease-out',
+        'fade-in-right': 'fade-in-right 0.5s ease-out',
       }
 
     },
